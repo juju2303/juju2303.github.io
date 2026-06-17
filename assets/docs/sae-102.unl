@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lab name="SAE_102" version="1" scripttimeout="300" lock="0">
+  <topology>
+    <nodes>
+      <node id="3" name="Srv" type="qemu" template="linux" image="linux-ubuntu-srv-16.04.4-webmin" console="vnc" cpu="2" cpulimit="0" ram="4096" ethernet="1" uuid="5955ef27-2cec-4586-aa7a-82584e63ee4c" firstmac="00:50:00:00:03:00" qemu_options="-machine type=pc,accel=kvm -vga virtio -usbdevice tablet -boot order=cd" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci" delay="0" icon="Server_Linux.png" config="0" left="189" top="357">
+        <interface id="0" name="e0" type="ethernet" network_id="4"/>
+      </node>
+      <node id="4" name="VPC-Dire" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="Desktop.png" config="0" left="183" top="96">
+        <interface id="0" name="eth0" type="ethernet" network_id="2"/>
+      </node>
+      <node id="5" name="VPC-Util" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="Desktop.png" config="0" left="186" top="225">
+        <interface id="0" name="eth0" type="ethernet" network_id="3"/>
+      </node>
+      <node id="6" name="VPC-Admin" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="Desktop.png" config="0" left="180" top="528">
+        <interface id="0" name="eth0" type="ethernet" network_id="5"/>
+      </node>
+      <node id="7" name="Switch-1" type="iol" template="iol" image="Switch_i86bi_LinuxL2-AdvEnterpriseK9-M_152_May_2018.bin" ethernet="5" nvram="1024" ram="1024" serial="0" console="" delay="0" icon="Switch.png" config="0" left="459" top="303">
+        <interface id="0" name="e0/0" type="ethernet" network_id="1"/>
+        <interface id="1" name="e1/0" type="ethernet" network_id="2"/>
+        <interface id="2" name="e2/0" type="ethernet" network_id="3"/>
+        <interface id="3" name="e3/0" type="ethernet" network_id="4"/>
+        <interface id="4" name="e4/0" type="ethernet" network_id="5"/>
+      </node>
+      <node id="2" name="Routeur" type="iol" template="iol" image="Routeur_L3-ADVENTERPRISEK9-M-15.4-2T.bin" ethernet="1" nvram="1024" ram="1024" serial="0" console="" delay="0" icon="Router.png" config="0" left="753" top="294">
+        <interface id="0" name="e0/0" type="ethernet" network_id="1"/>
+      </node>
+    </nodes>
+    <networks>
+      <network id="1" type="bridge" name="Net-R2iface_0" left="798" top="256" visibility="0"/>
+      <network id="2" type="bridge" name="Net-VPC-Direiface_0" left="243" top="136" visibility="0"/>
+      <network id="3" type="bridge" name="Net-VPC-Utiliface_0" left="246" top="265" visibility="0"/>
+      <network id="4" type="bridge" name="Net-Srviface_0" left="249" top="397" visibility="0"/>
+      <network id="5" type="bridge" name="Net-Switch-1iface_4" left="519" top="343" visibility="0"/>
+    </networks>
+  </topology>
+  <objects>
+    <configs>
+      <config id="7">CiEKISBMYXN0IGNvbmZpZ3VyYXRpb24gY2hhbmdlIGF0IDE3OjQ4OjA4IEVFVCBXZWQgRGVjIDE3IDIwMjUKIQp2ZXJzaW9uIDE1LjIKc2VydmljZSB0aW1lc3RhbXBzIGRlYnVnIGRhdGV0aW1lIG1zZWMKc2VydmljZSB0aW1lc3RhbXBzIGxvZyBkYXRldGltZSBtc2VjCm5vIHNlcnZpY2UgcGFzc3dvcmQtZW5jcnlwdGlvbgpzZXJ2aWNlIGNvbXByZXNzLWNvbmZpZwohCmhvc3RuYW1lIFN3aXRjaAohCmJvb3Qtc3RhcnQtbWFya2VyCmJvb3QtZW5kLW1hcmtlcgohCiEKIQpubyBhYWEgbmV3LW1vZGVsCmNsb2NrIHRpbWV6b25lIEVFVCAyIDAKIQohCiEKIQohCiEKIQohCmlwIGNlZgpubyBpcHY2IGNlZgohCiEKIQpzcGFubmluZy10cmVlIG1vZGUgcHZzdApzcGFubmluZy10cmVlIGV4dGVuZCBzeXN0ZW0taWQKIQohCiEgCiEKIQohCiEKIQohCiEKIQohCiEKIQohCmludGVyZmFjZSBFdGhlcm5ldDAvMAogbm8gc2h1dGRvd24KIQppbnRlcmZhY2UgRXRoZXJuZXQwLzEKIG5vIHNodXRkb3duCiEKaW50ZXJmYWNlIEV0aGVybmV0MC8yCiBubyBzaHV0ZG93bgohCmludGVyZmFjZSBFdGhlcm5ldDAvMwogbm8gc2h1dGRvd24KIQppbnRlcmZhY2UgRXRoZXJuZXQxLzAKIG5vIHNodXRkb3duCiEKaW50ZXJmYWNlIEV0aGVybmV0MS8xCiBubyBzaHV0ZG93bgohCmludGVyZmFjZSBFdGhlcm5ldDEvMgogbm8gc2h1dGRvd24KIQppbnRlcmZhY2UgRXRoZXJuZXQxLzMKIG5vIHNodXRkb3duCiEKaW50ZXJmYWNlIEV0aGVybmV0Mi8wCiBubyBzaHV0ZG93bgohCmludGVyZmFjZSBFdGhlcm5ldDIvMQogbm8gc2h1dGRvd24KIQppbnRlcmZhY2UgRXRoZXJuZXQyLzIKIG5vIHNodXRkb3duCiEKaW50ZXJmYWNlIEV0aGVybmV0Mi8zCiBubyBzaHV0ZG93bgohCmludGVyZmFjZSBFdGhlcm5ldDMvMAogbm8gc2h1dGRvd24KIQppbnRlcmZhY2UgRXRoZXJuZXQzLzEKIG5vIHNodXRkb3duCiEKaW50ZXJmYWNlIEV0aGVybmV0My8yCiBubyBzaHV0ZG93bgohCmludGVyZmFjZSBFdGhlcm5ldDMvMwogbm8gc2h1dGRvd24KIQppbnRlcmZhY2UgRXRoZXJuZXQ0LzAKIG5vIHNodXRkb3duCiEKaW50ZXJmYWNlIEV0aGVybmV0NC8xCiBubyBzaHV0ZG93bgohCmludGVyZmFjZSBFdGhlcm5ldDQvMgogbm8gc2h1dGRvd24KIQppbnRlcmZhY2UgRXRoZXJuZXQ0LzMKIG5vIHNodXRkb3duCiEKaXAgZm9yd2FyZC1wcm90b2NvbCBuZAohCmlwIGh0dHAgc2VydmVyCiEKaXAgc3NoIHNlcnZlciBhbGdvcml0aG0gZW5jcnlwdGlvbiBhZXMxMjgtY3RyIGFlczE5Mi1jdHIgYWVzMjU2LWN0cgppcCBzc2ggY2xpZW50IGFsZ29yaXRobSBlbmNyeXB0aW9uIGFlczEyOC1jdHIgYWVzMTkyLWN0ciBhZXMyNTYtY3RyCiEKIQohCiEKIQpjb250cm9sLXBsYW5lCiEKIQpsaW5lIGNvbiAwCiBsb2dnaW5nIHN5bmNocm9ub3VzCmxpbmUgYXV4IDAKbGluZSB2dHkgMCA0CiBsb2dpbgohCiEKIQplbmQK</config>
+    </configs>
+  </objects>
+</lab>
